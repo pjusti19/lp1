@@ -1,9 +1,10 @@
-import java.io.IOException;
+package br.cefetmg.inf.listas.lista02.b1047;
+
 import java.util.Scanner;
 
-public class main {
+public class Main {
  
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args){
  
         int A,B,C,D,R,X,TMAX,r;
 
