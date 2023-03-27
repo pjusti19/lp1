@@ -4,12 +4,13 @@ import java.util.Scanner;
  
 public class Main {
  
-    public static void main(String[] args){
+    public static void main(String[] args) {
     int x = 0, y = 1;
-    char o;
+    char o, t;
     double m[][] = new double[20][20], soma=0;
     Scanner input = new Scanner(System.in);
     o = input.next().charAt(0);
+    t = input.next().charAt(0);
     for (; x * y <= 121; x++)
     {
         m[x][y] = input.nextDouble();
@@ -21,9 +22,9 @@ public class Main {
             y += 1;
         }
     }
-    if (o == 'S')
+    if (t == 'S')
         System.out.printf("%f\n", soma);
-    else if (o == 'M')
+    else if (t == 'M')
         System.out.printf("%f\n", soma / 66);
     else
         System.out.printf("73918.6\n");
