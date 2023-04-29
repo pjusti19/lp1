@@ -1,3 +1,5 @@
+package br.cefetmg.inf.listas.lista08.r1003;
+
 import java.util.Scanner;
 
 class No {
