@@ -175,12 +175,11 @@ class FilaArray extends Fila {
     private int cont;
     private Integer itens[] = new Integer[10];
 
-    public void PilhaArray() {
+    public void FilhaArray() {
         this.cont = 0;
     }
 
     public void enfileirar(Object item) {
-        FilaArray pilha_array = new FilaArray();
         this.itens[this.cont] = (Integer) item;
         this.cont++;
     }
