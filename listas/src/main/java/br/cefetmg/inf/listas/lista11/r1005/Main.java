@@ -182,7 +182,6 @@ class PilhaArray extends Pilha {
     }
     
     public void empilhar(Object item){
-        PilhaArray pilha_array = new PilhaArray();
         this.itens[this.cont] = (Integer)item;
         this.cont++; 
     }
