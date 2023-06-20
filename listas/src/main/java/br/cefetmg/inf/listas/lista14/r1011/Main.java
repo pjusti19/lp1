@@ -1,9 +1,10 @@
-package br.cefetmg.inf.listas.lista14.r1011;
 
 import java.util.Scanner;
 
+@SuppressWarnings("unchecked")
 class NenhumItemException extends RuntimeException {
 
+    @SuppressWarnings("unchecked")
     public NenhumItemException() {
         super("NenhumItemException");
     }
@@ -12,40 +13,52 @@ class NenhumItemException extends RuntimeException {
 @SuppressWarnings("unchecked")
 interface ListaCommon<T> {
 
+    @SuppressWarnings("unchecked")
     T getItem(); // throws NenhumItemException
 
+    @SuppressWarnings("unchecked")
     int tamanho();
 
-    ;
-
+    @SuppressWarnings("unchecked")
     boolean vazia();
 
+    @SuppressWarnings("unchecked")
     Object[] toArray();
 
+    @SuppressWarnings("unchecked")
     T[] toArray(T[] x); // throws NenhumItemException
 }
 
+@SuppressWarnings("unchecked")
 interface ListaBasica<T> extends ListaCommon<T> {
 
+    @SuppressWarnings("unchecked")
     void adicionar(T item);
 
+    @SuppressWarnings("unchecked")
     T remover(); // throws NenhumItemException
 }
 
+@SuppressWarnings("unchecked")
 interface Pilha<T> extends ListaCommon<T> {
 
+    @SuppressWarnings("unchecked")
     void empilhar(T item);
 
+    @SuppressWarnings("unchecked")
     T desempilhar(); // throws NenhumItemException
 }
 
+@SuppressWarnings("unchecked")
 class PilhaEncadeada<T> implements Pilha<T> {
 
+    @SuppressWarnings("unchecked")
     private static class No<T> {
 
         T item;
         No<T> proximo;
 
+        @SuppressWarnings("unchecked")
         public No(T item, No<T> proximo) {
             this.item = item;
             this.proximo = proximo;
@@ -54,17 +67,20 @@ class PilhaEncadeada<T> implements Pilha<T> {
 
     private No<T> topo;
 
+    @SuppressWarnings("unchecked")
     PilhaEncadeada() {
         topo = null;
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public void empilhar(T item) {
         No<T> novo = new No<>(item, topo);
         topo = novo;
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public T desempilhar() {
         if (vazia()) {
             throw new NenhumItemException();
@@ -78,6 +94,7 @@ class PilhaEncadeada<T> implements Pilha<T> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public T getItem() {
         if (vazia()) {
             throw new NenhumItemException();
@@ -87,6 +104,7 @@ class PilhaEncadeada<T> implements Pilha<T> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public int tamanho() {
         int cont = 0;
         for (No<T> x = topo; x != null; x = x.proximo) {
@@ -97,6 +115,7 @@ class PilhaEncadeada<T> implements Pilha<T> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public boolean vazia() {
         return topo == null;
     }
@@ -137,26 +156,29 @@ class PilhaEncadeada<T> implements Pilha<T> {
     }
 }
 
+@SuppressWarnings("unchecked")
 class PilhaArray<T> implements Pilha<T> {
 
     private int cont;
-    private Object arr[];
     private T itens[];
 
     @SuppressWarnings("unchecked")
-    public void PilhaArray() {
-        arr = new Object[10];
-        itens = (T[]) arr[10];
+    public void PilhaArray() { 
+        this.itens = (T[]) new Object[10];
         this.cont = 0;
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public void empilhar(T item) {
+        if(this.itens == null)
+            PilhaArray();
         this.itens[this.cont] = item;
         this.cont++;
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public T desempilhar() {
         if (vazia()) {
             throw new NenhumItemException();
@@ -168,6 +190,7 @@ class PilhaArray<T> implements Pilha<T> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public T getItem() {
         if (vazia()) {
             throw new NenhumItemException();
@@ -176,11 +199,13 @@ class PilhaArray<T> implements Pilha<T> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public int tamanho() {
         return this.cont;
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public boolean vazia() {
         return tamanho() == 0;
     }
@@ -192,8 +217,7 @@ class PilhaArray<T> implements Pilha<T> {
             throw new NenhumItemException();
         }
         int tamanho = tamanho();
-        Object arr[] = new Object[tamanho];
-        T items[] = (T[]) arr[tamanho];
+        T items[] = (T[])  new Object[tamanho];
         for (int i = 0; i < tamanho; i++) {
             items[tamanho - i - 1] = this.itens[i];
         }
@@ -218,32 +242,41 @@ class PilhaArray<T> implements Pilha<T> {
 
 }
 
+@SuppressWarnings("unchecked")
 interface Fila<T> extends ListaCommon<T> {
 
+    @SuppressWarnings("unchecked")
     void enfileirar(Object item);
 
+    @SuppressWarnings("unchecked")
     T desenfileirar(); // throws NenhumItemException
 }
 
+@SuppressWarnings("unchecked")
 class FilaEncadeada<T> implements Fila<T> {
-
+    
+    @SuppressWarnings("unchecked")
     class No {
 
         private T valor;
         private No proximo;
 
+        @SuppressWarnings("unchecked")
         public T getValor() {
             return valor;
         }
 
+        @SuppressWarnings("unchecked")
         public void setValor(T valor) {
             this.valor = valor;
         }
 
+        @SuppressWarnings("unchecked")
         public No getProximo() {
             return proximo;
         }
 
+        @SuppressWarnings("unchecked")
         public void setProximo(No proximo) {
             this.proximo = proximo;
         }
@@ -269,6 +302,7 @@ class FilaEncadeada<T> implements Fila<T> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public T desenfileirar() {
         if (this.vazia()) {
             throw new NenhumItemException();
@@ -279,6 +313,7 @@ class FilaEncadeada<T> implements Fila<T> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public T getItem() {
         if (this.vazia()) {
             throw new NenhumItemException();
@@ -287,6 +322,7 @@ class FilaEncadeada<T> implements Fila<T> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public int tamanho() {
         if (inicio == null) {
             return 0;
@@ -303,6 +339,7 @@ class FilaEncadeada<T> implements Fila<T> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public boolean vazia() {
         return this.tamanho() == 0;
     }
@@ -344,27 +381,29 @@ class FilaEncadeada<T> implements Fila<T> {
     }
 }
 
+@SuppressWarnings("unchecked")
 class FilaArray<T> implements Fila<T> {
 
     private int cont;
-    private Object arr[];
     private T itens[];
 
     @SuppressWarnings("unchecked")
     public void FilaArray() {
-        arr = new Object[10];
-        itens = (T[]) arr[10];
+        itens = (T[]) new Object[10];
         this.cont = 0;
     }
 
     @SuppressWarnings("unchecked")
     @Override
     public void enfileirar(Object item) {
+        if(this.itens == null)
+            FilaArray();
         this.itens[this.cont] = (T) item;
         this.cont++;
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public T desenfileirar() {
         if (vazia()) {
             throw new NenhumItemException();
@@ -379,6 +418,7 @@ class FilaArray<T> implements Fila<T> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public T getItem() {
         if (vazia()) {
             throw new NenhumItemException();
@@ -387,11 +427,13 @@ class FilaArray<T> implements Fila<T> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public int tamanho() {
         return this.cont;
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public boolean vazia() {
         return tamanho() == 0;
     }
@@ -403,8 +445,7 @@ class FilaArray<T> implements Fila<T> {
             throw new NenhumItemException();
         }
         int tamanho = this.cont;
-        Object arr[] = new Object[tamanho];
-        T items[] = (T[]) arr[tamanho];
+        T items[] = (T[]) new Object[tamanho];
         for (int i = 0; i < tamanho; i++) {
             items[i] = this.itens[i];
         }
@@ -428,42 +469,56 @@ class FilaArray<T> implements Fila<T> {
     }
 }
 
+@SuppressWarnings("unchecked")
 interface Lista<T> extends ListaBasica<T> {
 
+    @SuppressWarnings("unchecked")
     void adicionarInicio(Object item);
 
+    @SuppressWarnings("unchecked")
     void adicionarFim(Object item);
 
+    @SuppressWarnings("unchecked")
     void adicionar(Object item, int posicao); // throws PosicaoInvalidaException
 
+    @SuppressWarnings("unchecked")
     Object removerInicio(); // throws NenhumItemException
 
+    @SuppressWarnings("unchecked")
     Object removerFim(); // throws NenhumItemException
 
+    @SuppressWarnings("unchecked")
     Object remover(int posicao); // throws NenhumItemException, PosicaoInvalidaExeption
 
+    @SuppressWarnings("unchecked")
     Object getItem(int posicao); // throws PosicaoInvalidaExeption
 }
 
+@SuppressWarnings("unchecked")
 class ListaEncadeada<T> implements Lista<T> {
 
+    @SuppressWarnings("unchecked")
     class No {
 
         private T valor;
         private No proximo;
 
+        @SuppressWarnings("unchecked")
         public T getValor() {
             return valor;
         }
 
+        @SuppressWarnings("unchecked")
         public void setValor(T valor) {
             this.valor = valor;
         }
 
+        @SuppressWarnings("unchecked")
         public No getProximo() {
             return proximo;
         }
 
+        @SuppressWarnings("unchecked")
         public void setProximo(No proximo) {
             this.proximo = proximo;
         }
@@ -471,6 +526,7 @@ class ListaEncadeada<T> implements Lista<T> {
     }
     private No base;
 
+    @SuppressWarnings("unchecked")
     private No getUltimo() {
         No aux = base;
         while (aux.getProximo() != null) {
@@ -494,6 +550,7 @@ class ListaEncadeada<T> implements Lista<T> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public void adicionar(T valor) {
         No novo = new No();
         novo.setValor(valor);
@@ -546,6 +603,7 @@ class ListaEncadeada<T> implements Lista<T> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public Object removerInicio() {
         if (this.vazia()) {
             throw new NenhumItemException();
@@ -555,6 +613,7 @@ class ListaEncadeada<T> implements Lista<T> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public T remover() {
         if (this.vazia()) {
             throw new NenhumItemException();
@@ -565,6 +624,7 @@ class ListaEncadeada<T> implements Lista<T> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public Object removerFim() {
         if (this.vazia()) {
             throw new NenhumItemException();
@@ -579,6 +639,7 @@ class ListaEncadeada<T> implements Lista<T> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public Object remover(int posicao) {
         if (posicao == 0) {
             removerInicio();
@@ -599,6 +660,7 @@ class ListaEncadeada<T> implements Lista<T> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public T getItem() {
         if (this.vazia()) {
             throw new NenhumItemException();
@@ -607,6 +669,7 @@ class ListaEncadeada<T> implements Lista<T> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public Object getItem(int posicao) {
         if (this.vazia()) {
             throw new NenhumItemException();
@@ -622,6 +685,7 @@ class ListaEncadeada<T> implements Lista<T> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public int tamanho() {
         if (base == null) {
             return 0;
@@ -638,6 +702,7 @@ class ListaEncadeada<T> implements Lista<T> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public boolean vazia() {
         return this.tamanho() == 0;
     }
@@ -650,8 +715,7 @@ class ListaEncadeada<T> implements Lista<T> {
         }
         No aux = this.base;
         int tamanho = this.tamanho();
-        Object arr[] = new Object[tamanho];
-        T items[] = (T[]) arr[tamanho];
+        T items[] = (T[])  new Object[tamanho];
         for (int i = 0; i < tamanho; i++) {
             items[i] = aux.getValor();
             aux = aux.getProximo();
@@ -679,16 +743,16 @@ class ListaEncadeada<T> implements Lista<T> {
     }
 }
 
+@SuppressWarnings("unchecked")
 class ListaArray<T> implements Lista<T> {
 
     private int cont;
-    private Object arr[];
     private T itens[];
 
+    @SuppressWarnings("unchecked")
     public void ListaArray() {
-        this.cont = 0;
-        arr = new Object[10];
-        itens = (T[]) arr[10];
+        this.cont = 0;     
+        itens = (T[])  new Object[10];
     }
 
     @Override
@@ -702,6 +766,8 @@ class ListaArray<T> implements Lista<T> {
     @Override
     @SuppressWarnings("unchecked")
     public void adicionar(T item) {
+        if(this.itens == null)
+            ListaArray();
         int tamanho = tamanho();
         this.itens[tamanho] = (T) item;
         this.cont++;
@@ -737,6 +803,7 @@ class ListaArray<T> implements Lista<T> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public Object removerInicio() {
         if (this.vazia()) {
             throw new NenhumItemException();
@@ -750,6 +817,7 @@ class ListaArray<T> implements Lista<T> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public T remover() {
         if (this.vazia()) {
             throw new NenhumItemException();
@@ -764,6 +832,7 @@ class ListaArray<T> implements Lista<T> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public Object removerFim() {
         if (this.vazia()) {
             throw new NenhumItemException();
@@ -775,6 +844,7 @@ class ListaArray<T> implements Lista<T> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public Object remover(int posicao) {
         if (this.vazia()) {
             throw new NenhumItemException();
@@ -791,6 +861,7 @@ class ListaArray<T> implements Lista<T> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public T getItem() {
         if (this.vazia()) {
             throw new NenhumItemException();
@@ -800,6 +871,7 @@ class ListaArray<T> implements Lista<T> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public Object getItem(int posicao) {
         if (this.vazia()) {
             throw new NenhumItemException();
@@ -812,11 +884,13 @@ class ListaArray<T> implements Lista<T> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public int tamanho() {
         return this.cont;
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public boolean vazia() {
         return tamanho() == 0;
     }
@@ -828,8 +902,7 @@ class ListaArray<T> implements Lista<T> {
             throw new NenhumItemException();
         }
         int tamanho = this.cont;
-        Object arr[] = new Object[tamanho];
-        T items[] = (T[]) arr[tamanho];
+        T items[] = (T[])  new Object[tamanho];
         for (int i = 0; i < tamanho; i++) {
             items[i] = this.itens[i];
         }
@@ -853,89 +926,107 @@ class ListaArray<T> implements Lista<T> {
     }
 }
 
+@SuppressWarnings("unchecked")
 class PilhaAdapter<T> implements ListaBasica<T> {
 
     private final Pilha<T> pilha;
 
+    @SuppressWarnings("unchecked")
     public PilhaAdapter(Pilha<T> pilha) {
         this.pilha = pilha;
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public void adicionar(T item) {
         pilha.empilhar(item);
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public T remover() {
         return pilha.desempilhar();
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public T getItem() {
         return pilha.getItem();
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public int tamanho() {
         return pilha.tamanho();
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public boolean vazia() {
         return pilha.vazia();
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public Object[] toArray() {
         return pilha.toArray();
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public T[] toArray(T[] items) {
         return pilha.toArray(items);
     }
 }
 
+@SuppressWarnings("unchecked")
 class FilaAdapter<T> implements ListaBasica<T> {
 
     private final Fila<T> fila;
 
+    @SuppressWarnings("unchecked")
     public FilaAdapter(Fila<T> fila) {
         this.fila = fila;
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public void adicionar(T item) {
         fila.enfileirar(item);
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public T remover() {
         return fila.desenfileirar();
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public T getItem() {
         return fila.getItem();
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public int tamanho() {
         return fila.tamanho();
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public boolean vazia() {
         return fila.vazia();
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public Object[] toArray() {
         return fila.toArray();
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public T[] toArray(T[] items) {
         return fila.toArray(items);
     }
@@ -945,10 +1036,12 @@ class Main {
 
     private final ListaBasica<Integer> lista;
 
+    @SuppressWarnings("unchecked")
     public Main(ListaBasica<Integer> lista) {
         this.lista = lista;
     }
 
+    @SuppressWarnings("unchecked")
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         Main main;
@@ -962,19 +1055,19 @@ class Main {
                 main = new Main(new PilhaAdapter<>(new PilhaEncadeada<>()));
                 break;
             case "PA":
-                main = new Main(new PilhaAdapter(new PilhaArray()));
+                main = new Main(new PilhaAdapter<>(new PilhaArray()));
                 break;
             case "FE":
-                main = new Main(new FilaAdapter(new FilaEncadeada()));
+                main = new Main(new FilaAdapter<>(new FilaEncadeada<>()));
                 break;
             case "FA":
-                main = new Main(new FilaAdapter(new FilaArray()));
+                main = new Main(new FilaAdapter<>(new FilaArray<>()));
                 break;
             case "LE":
-                main = new Main(new ListaEncadeada());
+                main = new Main(new ListaEncadeada<>());
                 break;
             default:
-                main = new Main(new ListaArray());
+                main = new Main(new ListaArray<>());
         }
 
         while (!token.equals("Q")) {
